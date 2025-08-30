@@ -21,11 +21,11 @@ export default function NoteSearch() {
         setSearchResults(results);
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    };
+    // const handleKeyPress = (e: React.KeyboardEvent) => {
+    //     if (e.key === 'Enter') {
+    //         handleSearch();
+    //     }
+    // };
 
     return (
         <div className="py-12">

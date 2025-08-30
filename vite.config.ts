@@ -17,5 +17,8 @@ export default defineConfig(({command})=>({
     ].filter(Boolean),
     esbuild: {
         jsx: 'automatic',
-    },
+    },resolve: {
+    alias: {
+        '@': '/resources/js',
+    },},
 }));
