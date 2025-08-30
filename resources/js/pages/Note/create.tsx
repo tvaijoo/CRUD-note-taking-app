@@ -2,14 +2,15 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/app-layout';
-import { dashboard } from '@/routes';
+// import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { Textarea } from "@/components/ui/textarea"
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { CircleAlert, Key } from 'lucide-react';
+import { CircleAlert} from 'lucide-react';
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Create a new note',
@@ -18,7 +19,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Dashboard() {
-        const{data,setData,post,processing,errors} =useForm({name:'',category:'',description:''})
+        const{data,setData,post,errors} =useForm({name:'',category:'',description:''})
 const handleSubmit = (e:React.FormEvent)=>{
     e.preventDefault();
    post(route('note.store'));
@@ -28,7 +29,7 @@ const handleSubmit = (e:React.FormEvent)=>{
             <Head title="Create a new note" />
             <div className='w-8/12 p-4'>
                 <form onSubmit={handleSubmit} className='space-y-4'>
-                    {/* Display error */}
+                   
 {Object.keys(errors).length > 0 && (
     <Alert variant="destructive">
         <CircleAlert className="h-4 w-4"/>

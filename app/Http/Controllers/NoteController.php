@@ -43,7 +43,7 @@ class NoteController extends Controller
         if (!$userId) {
             abort(401);
         }
-        // Ensure user can only edit their own notes
+     
         if ($note->user_id !== $userId) {
             abort(403);
         }
@@ -54,7 +54,7 @@ class NoteController extends Controller
         if (!$userId) {
             abort(401);
         }
-        // Ensure user can only update their own notes
+   
         if ($note->user_id !== $userId) {
             abort(403);
         }
@@ -75,7 +75,7 @@ class NoteController extends Controller
         if (!$userId) {
             abort(401);
         }
-        // Ensure user can only delete their own notes
+      
         if ($note->user_id !== $userId) {
             abort(403);
         }

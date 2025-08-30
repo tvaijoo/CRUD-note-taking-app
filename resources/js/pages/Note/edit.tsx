@@ -2,14 +2,14 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/app-layout';
-import { dashboard } from '@/routes';
-import { type BreadcrumbItem } from '@/types';
+// import { dashboard } from '@/routes';
+// import { type BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/react';
 import { Textarea } from "@/components/ui/textarea"
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/react'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { CircleAlert, Key } from 'lucide-react';
+import { CircleAlert } from 'lucide-react';
 
 interface Note{
     id:number,
@@ -31,7 +31,7 @@ const handleUpdate = (e:React.FormEvent)=>{
             <Head title="Update the note" />
             <div className='w-8/12 p-4'>
                 <form onSubmit={handleUpdate} className='space-y-4'>
-                    {/* Display error */}
+                   
 {Object.keys(errors).length > 0 && (
     <Alert variant="destructive">
         <CircleAlert className="h-4 w-4"/>

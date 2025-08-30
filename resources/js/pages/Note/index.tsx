@@ -39,11 +39,11 @@ interface Notes{
 export default function Dashboard() {
 const { notes,flash } = (usePage().props as unknown as PageProps);
 const {processing,delete:destroy}=useForm();
-const [searchTerm, setSearchTerm] = useState('');
+const [searchTerm] = useState('');
 
 const handleDelete=(id:number,name:string)=>
     {
-        if(confirm(`Do you want to delete the product -${id}.${name}`)){
+        if(confirm(`Do you want to delete the product ${id}.${name}`)){
 destroy(route("note.destroy",id));
         }
         

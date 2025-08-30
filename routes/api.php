@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::get('/ping', fn () => ['status' => 'ok']);
-
 Route::prefix('auth')->group(function () {
 	// Public
 	Route::post('/register', [AuthController::class, 'register'])->name('register');

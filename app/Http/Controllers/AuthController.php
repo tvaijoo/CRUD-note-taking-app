@@ -30,7 +30,6 @@ class AuthController extends Controller
         $user->name = request()->name;
         $user->email = request()->email;
         $user->password = bcrypt(request()->password);
-        // $user->user_id = auth()->id() ?? null; // Add this line
         $user->save();
 
         return response()->json($user, 201);

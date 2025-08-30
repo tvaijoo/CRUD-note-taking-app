@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { Head } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 
+interface Note{
+    id:number,
+    name:string,
+    description:string,
+    category:string,
+}
+
 export default function NoteSearch() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -32,7 +39,7 @@ export default function NoteSearch() {
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyPress={handleKeyPress}
+                            // onKeyPress={handleKeyPress}
                             placeholder="Search by title..."
                             className="flex-1 border rounded px-3 py-2"
                         />
@@ -46,7 +53,7 @@ export default function NoteSearch() {
 
                     {searchResults.length > 0 ? (
                         <div className="grid gap-4">
-                            {searchResults.map((note: any) => (
+                            {searchResults.map((note: Note) => (
                                 <div key={note.id} className="border rounded p-4">
                                     <h3 className="font-semibold">{note.name}</h3>
                                     <p className="text-gray-600">{note.description}</p>
