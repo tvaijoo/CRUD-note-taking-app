@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/app-layout';
 // import { dashboard } from '@/routes';
 // import { type BreadcrumbItem } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head} from '@inertiajs/react';
 import { Textarea } from "@/components/ui/textarea"
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/react'

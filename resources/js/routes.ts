@@ -24,7 +24,7 @@ export const authRefreshApi = () => ({
     method: 'post',
 });
 
-type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
+// type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
 // interface Route {
 //   url: string;
