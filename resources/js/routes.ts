@@ -26,10 +26,10 @@ export const authRefreshApi = () => ({
 
 type HttpMethod = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
-interface Route {
-  url: string;
-  method?: HttpMethod;
-}
+// interface Route {
+//   url: string;
+//   method?: HttpMethod;
+// }
 
 // ========== Web routes ==========
 export const register = () => ({
