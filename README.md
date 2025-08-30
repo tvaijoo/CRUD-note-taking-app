@@ -14,13 +14,13 @@ Installation
 
 1. Clone the repository and navigate to the project folder:
 
-   ```powershell
+   ```cmd 
    git clone https://github.com/tvaijoo/CRUD-note-taking-app.git
    cd CRUD-note-taking-app
    ```
 2. Install PHP dependencies:
 
-   ```powershell
+   ```cmd 
    composer install
    ```
 
@@ -32,24 +32,31 @@ Create the .env file by creating manually.
 
 4. Generate the key:
 
-```powershell
+```cmd 
 php artisan key:generate
-Run database migrations:
 ```
 
-```powershell
+Run database migrations:
+```cmd 
 php artisan migrate
 ```
 
 5. Start the development server:
 
-```powershell
+```cmd 
 php artisan serve
+```
+
+Create a new terminal and install frontend dependencies
+
+```cmd
+npm install
+npm run dev
 ```
 
 6. Open your browser and go to:
 
-```powershell
+```cmd 
 http://localhost:8000
 ```
 

@@ -1,5 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
-import confirm from './confirm'
+// import confirm from './confirm'
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::edit
  * @see app/Http/Controllers/Settings/PasswordController.php:18
@@ -83,15 +83,15 @@ edit.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/Settings/PasswordController.php:26
  * @route '/settings/password'
  */
-export const update = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: update.url(options),
-    method: 'put',
+    method: 'post',
 })
 
 update.definition = {
-    methods: ["put"],
+    methods: ["post"],
     url: '/settings/password',
-} satisfies RouteDefinition<["put"]>
+} satisfies RouteDefinition<["post"]>
 
 /**
 * @see \App\Http\Controllers\Settings\PasswordController::update
@@ -107,9 +107,9 @@ update.url = (options?: RouteQueryOptions) => {
  * @see app/Http/Controllers/Settings/PasswordController.php:26
  * @route '/settings/password'
  */
-update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: update.url(options),
-    method: 'put',
+    method: 'post',
 })
 
     /**
@@ -118,12 +118,7 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
  * @route '/settings/password'
  */
     const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: update.url({
-                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                        _method: 'PUT',
-                        ...(options?.query ?? options?.mergeQuery ?? {}),
-                    }
-                }),
+        action: update.url(options),
         method: 'post',
     })
 
@@ -132,13 +127,8 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
  * @see app/Http/Controllers/Settings/PasswordController.php:26
  * @route '/settings/password'
  */
-        updateForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: update.url({
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'PUT',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
+        updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(options),
             method: 'post',
         })
     

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 export const searchPage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ searchPage.definition = {
 
 /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 searchPage.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ searchPage.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 searchPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ searchPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 searchPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ searchPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
     const searchPageForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ searchPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
         searchPageForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ searchPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\SearchController::searchPage
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
         searchPageForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

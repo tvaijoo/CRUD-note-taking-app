@@ -78,61 +78,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     index.form = indexForm
 /**
-* @see \App\Http\Controllers\NoteController::store
- * @see app/Http/Controllers/NoteController.php:23
- * @route '/note'
- */
-export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-store.definition = {
-    methods: ["post"],
-    url: '/note',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\NoteController::store
- * @see app/Http/Controllers/NoteController.php:23
- * @route '/note'
- */
-store.url = (options?: RouteQueryOptions) => {
-    return store.definition.url + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\NoteController::store
- * @see app/Http/Controllers/NoteController.php:23
- * @route '/note'
- */
-store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: store.url(options),
-    method: 'post',
-})
-
-    /**
-* @see \App\Http\Controllers\NoteController::store
- * @see app/Http/Controllers/NoteController.php:23
- * @route '/note'
- */
-    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: store.url(options),
-        method: 'post',
-    })
-
-            /**
-* @see \App\Http\Controllers\NoteController::store
- * @see app/Http/Controllers/NoteController.php:23
- * @route '/note'
- */
-        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: store.url(options),
-            method: 'post',
-        })
-    
-    store.form = storeForm
-/**
 * @see \App\Http\Controllers\NoteController::create
  * @see app/Http/Controllers/NoteController.php:20
  * @route '/note/create'
@@ -210,6 +155,61 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
     
     create.form = createForm
+/**
+* @see \App\Http\Controllers\NoteController::store
+ * @see app/Http/Controllers/NoteController.php:23
+ * @route '/note'
+ */
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/note',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\NoteController::store
+ * @see app/Http/Controllers/NoteController.php:23
+ * @route '/note'
+ */
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\NoteController::store
+ * @see app/Http/Controllers/NoteController.php:23
+ * @route '/note'
+ */
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \App\Http\Controllers\NoteController::store
+ * @see app/Http/Controllers/NoteController.php:23
+ * @route '/note'
+ */
+    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: store.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\NoteController::store
+ * @see app/Http/Controllers/NoteController.php:23
+ * @route '/note'
+ */
+        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: store.url(options),
+            method: 'post',
+        })
+    
+    store.form = storeForm
 /**
 * @see \App\Http\Controllers\NoteController::edit
  * @see app/Http/Controllers/NoteController.php:41
@@ -317,15 +317,15 @@ edit.head = (args: { note: number | { id: number } } | [note: number | { id: num
  * @see app/Http/Controllers/NoteController.php:52
  * @route '/note/{note}'
  */
-export const update = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const update = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
-    method: 'post',
+    method: 'put',
 })
 
 update.definition = {
-    methods: ["post"],
+    methods: ["put"],
     url: '/note/{note}',
-} satisfies RouteDefinition<["post"]>
+} satisfies RouteDefinition<["put"]>
 
 /**
 * @see \App\Http\Controllers\NoteController::update
@@ -365,9 +365,9 @@ update.url = (args: { note: number | { id: number } } | [note: number | { id: nu
  * @see app/Http/Controllers/NoteController.php:52
  * @route '/note/{note}'
  */
-update.post = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+update.put = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
-    method: 'post',
+    method: 'put',
 })
 
     /**
@@ -376,7 +376,12 @@ update.post = (args: { note: number | { id: number } } | [note: number | { id: n
  * @route '/note/{note}'
  */
     const updateForm = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-        action: update.url(args, options),
+        action: update.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
         method: 'post',
     })
 
@@ -385,8 +390,13 @@ update.post = (args: { note: number | { id: number } } | [note: number | { id: n
  * @see app/Http/Controllers/NoteController.php:52
  * @route '/note/{note}'
  */
-        updateForm.post = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-            action: update.url(args, options),
+        updateForm.put = (args: { note: number | { id: number } } | [note: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
             method: 'post',
         })
     
@@ -482,7 +492,7 @@ destroy.delete = (args: { note: number | { id: number } } | [note: number | { id
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -497,7 +507,7 @@ search.definition = {
 
 /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 search.url = (options?: RouteQueryOptions) => {
@@ -506,7 +516,7 @@ search.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -515,7 +525,7 @@ search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
 search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -525,7 +535,7 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
     const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -535,7 +545,7 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
         searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -544,7 +554,7 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\SearchController::search
- * @see app/Http/Controllers/SearchController.php:27
+ * @see app/Http/Controllers/SearchController.php:12
  * @route '/note/search'
  */
         searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -560,8 +570,8 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     search.form = searchForm
 const note = {
     index,
-store,
 create,
+store,
 edit,
 update,
 destroy,

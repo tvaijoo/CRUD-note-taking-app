@@ -67,6 +67,6 @@ export const note = {
     search: () => ({ url: '/note/search', method: 'get' }),
 };
 
-export const searchNotes = () => ({ url: '/search/notes', method: 'get' });
+export const searchNotes = () => ({ url: '/note/search', method: 'get' });
 
 export const appearance = () => ({ url: '/settings/appearance', method: 'get' });

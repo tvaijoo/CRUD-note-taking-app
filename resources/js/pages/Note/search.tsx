@@ -16,7 +16,7 @@ export default function NoteSearch() {
     const handleSearch = async () => {
         if (!searchQuery.trim()) return;
         
-        const response = await fetch(`/search/notes?query=${encodeURIComponent(searchQuery)}`);
+        const response = await fetch(`/note/search?query=${encodeURIComponent(searchQuery)}`);
         const results = await response.json();
         setSearchResults(results);
     };
